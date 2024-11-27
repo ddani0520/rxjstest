@@ -1,2 +1,6 @@
+https://blog.logrocket.com/guide-rxjs-observables/#understanding-observables-pull-vs-push
+https://medium.com/@maxjerry0107/mastering-rxjs-with-examples-a-comprehensive-guide-eb3832c62028
+https://www.thisdot.co/blog/creating-observables-in-rxjs
+
+
 https://rxjs.dev/guide/operators
-https://v16.angular.io/guide/observables
