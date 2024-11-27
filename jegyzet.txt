@@ -1,0 +1,2 @@
+https://rxjs.dev/guide/operators
+https://v16.angular.io/guide/observables

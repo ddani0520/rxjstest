@@ -1,0 +1,55 @@
+<mat-card class="main">
+  <div class="control">
+    <div class="subject-control">
+      <div class="button-input">
+        <button mat-raised-button (click)="makeSubject()">Make Subject</button>
+      </div>
+      <div class="button-input">
+        <button mat-raised-button (click)="makeBehaviorSubject()">Make BehaviorSubject</button>
+        <mat-form-field>
+          <mat-label>Default value</mat-label>
+          <input matInput [(ngModel)]="behaviorSubjectValue" type="text"/>
+        </mat-form-field>
+      </div>
+      <div class="button-input">
+        <button mat-raised-button (click)="makeReplaySubject()">Make ReplaySubject</button>
+        <mat-form-field>
+          <mat-label>Buffer size</mat-label>
+          <input matInput [(ngModel)]="replaySubjectBufferValue" type="number"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="button-input">
+      <ng-container *ngIf="this.subjects.length > 0">
+        <mat-form-field>
+          <mat-select [(ngModel)]="selectedSubjectIndexToSubscribe">
+            <mat-option *ngFor="let subject of subjects, let index = index"
+                        [value]="index">{{index + ' ' + getSubjectType(subject)}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="onSubjectSelected(subjects[selectedSubjectIndexToSubscribe])">Subscribe
+        </button>
+      </ng-container>
+    </div>
+    <div class="button-input">
+      <ng-container *ngIf="this.subjects.length > 0">
+        <mat-form-field>
+          <mat-select [(ngModel)]="selectedSubjectIndexToNext">
+            <mat-option *ngFor="let subject of subjects, let index = index"
+                        [value]="index">{{index + ' ' + getSubjectType(subject)}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="next()">Next</button>
+      </ng-container>
+    </div>
+  </div>
+  <mat-card *ngIf="this.subscriptionValues.length > 0" class="values">
+    <span mat-card-title>Values</span>
+    <ng-container *ngFor="let valueArray of this.subscriptionValues, let index = index">
+      <div *ngFor="let value of valueArray" [style.color]="toColor(index)">
+        {{value}}
+      </div>
+    </ng-container>
+  </mat-card>
+</mat-card>
